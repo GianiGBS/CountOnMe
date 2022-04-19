@@ -10,7 +10,12 @@ import XCTest
 @testable import CountOnMe
 
 class SimpleCalcTests: XCTestCase {
+    var calculator: Calculator!
+    override func setUp() {
+        super.setUp()
+    }
     func testGiven_When_Then() {
     }
-
+    func testGivenIs1Plus1_WhenTapEqual_ThenResultIs2() {
+    }
 }
