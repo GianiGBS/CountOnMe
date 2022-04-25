@@ -11,11 +11,29 @@ import XCTest
 
 class SimpleCalcTests: XCTestCase {
     var calculator: Calculator!
+    var result = "0"
+
     override func setUp() {
         super.setUp()
+        calculator = Calculator(currentText: "")
     }
-    func testGiven_When_Then() {
+
+// Addition
+    func testGivenAdd_WhenTapEqual_ThenResultIsSum() {
     }
-    func testGivenIs1Plus1_WhenTapEqual_ThenResultIs2() {
+// Substraction
+    func testGivenSubtract_WhenTapEqual_ThenResultIsDifference() {
+    }
+// Multiplication
+    func testGivenMultiply_WhenTapEqual_ThenResultIsProduct() {
+    }
+// Division
+    func testGivenDivide_WhenTapEqual_ThenResultIsQuotient() {
+    }
+// Priority
+    func testGivenMultiOperator_WhenTapEqual_ThenResultIsPriority() {
+    }
+// Number
+    func testGivenIsEmpty_WhenTapNumber_ThenNumberAppear() {
     }
 }

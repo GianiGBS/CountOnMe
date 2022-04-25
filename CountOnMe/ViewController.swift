@@ -10,70 +10,91 @@ import UIKit
 
 class ViewController: UIViewController {
     // MARK: - Outlets
+
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
 
-    var calculator = Calculator()
-
-    // View Life cycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+    lazy var calculator = Calculator(currentText: textView.text)
 
     // View actions
     @IBAction func tappedAllClearButton(_ sender: UIButton) {
-            textView.text.removeAll()
+        calculator.currentText.removeAll()
+        textView.text = calculator.currentText
     }
-
     @IBAction func tappedNegativeButton(_ sender: UIButton) {
-            textView.text.append(" - ")
+        calculator.currentText.append(" - ")
+        textView.text = calculator.currentText
         }
-// Operator %
-    @IBAction func tappedPourCentButton(_ sender: UIButton) {
+    @IBAction func tappedDecimalButton(_ sender: UIButton) {
+        guard calculator.addDecimal(symbol: ",")
+//        calculator.currentText.append(",")
+//        textView.text = calculator.currentText
+        else {
+            return warnningAlert()
+        }
+        textView.text = calculator.currentText
     }
+// Add Numbers
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-        if calculator.expressionHaveResult {
+        calculator.addNumbers(number: numberText)
             textView.text = calculator.currentText
         }
-        textView.text.append(numberText)
-    }
-// Operator Addition
+
+// Calculate Element
+    // Add % Division by 100
+    @IBAction func tappedPourCentButton(_ sender: UIButton) {
+        calculator.doThePercent()
+        textView.text = calculator.currentText
+            }
+    // Add Operator Addition
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if calculator.canAddOperator {
-            textView.text.append(" + ")
-        } else {
-            warnningAlert()
+        guard calculator.addOperator(operator: "+")
+//            calculator.currentText.append(" + ")
+//            textView.text = calculator.currentText
+//    }
+        else {
+            return warnningAlert()
         }
+        textView.text = calculator.currentText
     }
-// Operator Substraction
+    // Add Operator Substraction
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        if calculator.canAddOperator {
-            textView.text.append(" - ")
-        } else {
-            warnningAlert()
+        guard calculator.addOperator(operator: "-")
+//            calculator.currentText.append(" - ")
+//            textView.text = calculator.currentText
+//        }
+        else {
+            return warnningAlert()
         }
+        textView.text = calculator.currentText
     }
-// Operator Multiplication
+    // Add Operator Multiplication
     @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        if calculator.expressionOrOperatorIsValid() {
-            textView.text.append(" x ")
-        } else {
-            warnningAlert()
+        guard calculator.addOperator(operator: "x")
+//            calculator.currentText.append(" x ")
+//            textView.text = calculator.currentText
+//        }
+        else {
+            return warnningAlert()
         }
+        textView.text = calculator.currentText
     }
-// Operator Division
+    // Add Operator Division
     @IBAction func tappedDivisionButton(_ sender: UIButton) {
-        if calculator.canAddOperator {
-            textView.text.append(" ÷ ")
-        } else {
-            warnningAlert()
+        guard calculator.addOperator(operator: "÷")
+//            calculator.currentText.append(" ÷ ")
+//            textView.text = calculator.currentText
+//        }
+        else {
+            return warnningAlert()
         }
+        textView.text = calculator.currentText
     }
-// Operator Equal
+
+    // Operator Equal
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         guard calculator.expressionOrOperatorIsValid()
         else {
@@ -81,17 +102,20 @@ class ViewController: UIViewController {
                                             preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             return self.present(alertVC, animated: true, completion: nil)
-        }
+            }
 
-        guard calculator.expressionHaveEnoughElement
+        guard calculator.expressionHasEnoughElement
         else {
             let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !",
                                             preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             return self.present(alertVC, animated: true, completion: nil)
-        }
+            }
         calculator.doTheMath()
+        textView.text = calculator.currentText
     }
+    // MARK: - Functions
+
     fileprivate func warnningAlert() {
         let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !",
                                         preferredStyle: .alert)
