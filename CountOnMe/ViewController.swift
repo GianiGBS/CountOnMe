@@ -21,19 +21,11 @@ class ViewController: UIViewController {
         calculator.currentText.removeAll()
         textView.text = calculator.currentText
     }
-    @IBAction func tappedNegativeButton(_ sender: UIButton) {
-        calculator.currentText.append(" - ")
+    @IBAction func tappedClearLastButton(_ sender: UIButton) {
+        calculator.clearLastEntry()
         textView.text = calculator.currentText
         }
-    @IBAction func tappedDecimalButton(_ sender: UIButton) {
-        guard calculator.addDecimal(symbol: ",")
-//        calculator.currentText.append(",")
-//        textView.text = calculator.currentText
-        else {
-            return warnningAlert()
-        }
-        textView.text = calculator.currentText
-    }
+
 // Add Numbers
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
@@ -42,81 +34,70 @@ class ViewController: UIViewController {
         calculator.addNumbers(number: numberText)
             textView.text = calculator.currentText
         }
-
-// Calculate Element
-    // Add % Division by 100
-    @IBAction func tappedPourCentButton(_ sender: UIButton) {
-        calculator.doThePercent()
+    // Add Decimal Numbers
+    @IBAction func tappedDecimalButton(_ sender: UIButton) {
+        guard calculator.addDecimal(symbol: ".")
+        else {
+            return warnningAlert()
+        }
         textView.text = calculator.currentText
-            }
+    }
+
+// Operator Element
+
     // Add Operator Addition
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        guard calculator.addOperator(operator: "+")
-//            calculator.currentText.append(" + ")
-//            textView.text = calculator.currentText
-//    }
-        else {
+        guard calculator.addOperator(operator: "+") else {
             return warnningAlert()
         }
         textView.text = calculator.currentText
     }
     // Add Operator Substraction
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        guard calculator.addOperator(operator: "-")
-//            calculator.currentText.append(" - ")
-//            textView.text = calculator.currentText
-//        }
-        else {
+        guard calculator.addOperator(operator: "-") else {
             return warnningAlert()
         }
         textView.text = calculator.currentText
     }
     // Add Operator Multiplication
     @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        guard calculator.addOperator(operator: "x")
-//            calculator.currentText.append(" x ")
-//            textView.text = calculator.currentText
-//        }
-        else {
+        guard calculator.addOperator(operator: "×") else {
             return warnningAlert()
         }
         textView.text = calculator.currentText
     }
     // Add Operator Division
     @IBAction func tappedDivisionButton(_ sender: UIButton) {
-        guard calculator.addOperator(operator: "÷")
-//            calculator.currentText.append(" ÷ ")
-//            textView.text = calculator.currentText
-//        }
-        else {
+        guard calculator.addOperator(operator: "÷") else {
             return warnningAlert()
         }
         textView.text = calculator.currentText
     }
-
-    // Operator Equal
+// Calculate elements
+    // Calculate % Percentage
+    @IBAction func tappedPourCentButton(_ sender: UIButton) {
+        if calculator.doThePercent().validity == false {
+            alert(title: "Zéro!", description: calculator.doTheMath().message)
+        }
+        textView.text = calculator.currentText
+    }
+    // Calculate Equal
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-        guard calculator.expressionOrOperatorIsValid()
-        else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !",
-                                            preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
-            }
-
-        guard calculator.expressionHasEnoughElement
-        else {
-            let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !",
-                                            preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            return self.present(alertVC, animated: true, completion: nil)
-            }
-        calculator.doTheMath()
+        if calculator.doTheMath().validity == false {
+            alert(title: "Zéro!", description: calculator.doTheMath().message)
+        }
         textView.text = calculator.currentText
     }
     // MARK: - Functions
 
-    fileprivate func warnningAlert() {
+    fileprivate func alert(title: String, description: String) {
+        let alertVC = UIAlertController(title: title, message: description,
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+
+    fileprivate func warnningAlert( ) {
         let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !",
                                         preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

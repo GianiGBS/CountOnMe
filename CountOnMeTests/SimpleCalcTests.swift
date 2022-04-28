@@ -20,6 +20,8 @@ class SimpleCalcTests: XCTestCase {
 
 // Addition
     func testGivenAdd_WhenTapEqual_ThenResultIsSum() {
+        calculator.currentText = "1 + 1"
+        calculator.doTheMath()
     }
 // Substraction
     func testGivenSubtract_WhenTapEqual_ThenResultIsDifference() {

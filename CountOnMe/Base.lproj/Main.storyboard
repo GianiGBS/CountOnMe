@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="1+1 = 2" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="T2H-yn-nBB">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="1 + 1 = 2" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="T2H-yn-nBB">
                                 <rect key="frame" x="16" y="16" width="288" height="114"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
@@ -63,7 +63,7 @@
                                                 <rect key="frame" x="74.5" y="0.0" width="64.5" height="51"/>
                                                 <color key="backgroundColor" red="0.46913260919999999" green="0.7149516575" blue="0.62407517239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="+/-">
+                                                <state key="normal" title="C">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -72,7 +72,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="tappedNegativeButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="O2f-TZ-4ah"/>
+                                                    <action selector="tappedClearLastButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="gNR-uH-xVO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VO-1B-qvZ">
@@ -164,7 +164,7 @@
                                                 <rect key="frame" x="223.5" y="0.0" width="64.5" height="50.5"/>
                                                 <color key="backgroundColor" red="0.89803922179999995" green="0.54901963470000004" blue="0.58823531870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                                <state key="normal" title="x">
+                                                <state key="normal" title="×">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -339,7 +339,7 @@
                                                 <rect key="frame" x="149" y="0.0" width="64.5" height="51"/>
                                                 <color key="backgroundColor" red="0.60392156860000001" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                                <state key="normal" title=",">
+                                                <state key="normal" title=".">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>

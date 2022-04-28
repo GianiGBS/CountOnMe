@@ -41,7 +41,7 @@ class Calculator {
         }
         return false
     }
-    
+
 // Check if there already a decimal
     var isDecimal: Bool {
         if isLastCharacterDecimal || numberOfDecimal() > 0 {
@@ -66,7 +66,9 @@ class Calculator {
             return decimalCount
     }
     func expressionOrOperatorIsValid() -> Bool {
-        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "÷" && !isLastCharacterDecimal
+        return elements.last != "+" && elements.last != "-"
+            && elements.last != "x" && elements.last != "÷"
+            && !isLastCharacterDecimal
     }
     func addOperator(operator symbol: String) -> Bool {
         guard canAddOperator else {
@@ -85,6 +87,33 @@ class Calculator {
             currentText = ""
         }
     }
+    func removeLastEntryOfCurrentText() {
+        if expressionHasResult {
+            if let firstCharacterToTrim = currentText.firstIndex(of: "=") {
+                for character in currentText {
+                    if let index = currentText.lastIndex(of: character) {
+                        if index >= currentText.index(before: firstCharacterToTrim) {
+                            currentText.remove(at: index)
+                        }
+                    }
+                }
+            }
+        } else if currentText.isEmpty {
+            currentText = ""
+        } else {
+            if let lastCharacter = currentText.last, lastCharacter == " " {
+                currentText.removeLast()
+            }
+            currentText.removeLast()
+        }
+    }
+    func clearLastEntry() {
+        if currentText == "0" {
+            return
+        }
+
+        removeLastEntryOfCurrentText()
+    }
     // Add Numbers to Calculate
     func addNumbers(number: String) {
         emptyCurrentTextIfExpressionHasResult()
@@ -93,7 +122,7 @@ class Calculator {
     func addDecimal(symbol: String) -> Bool {
         emptyCurrentTextIfExpressionHasResult()
         if !isDecimal {
-            currentText.append(",")
+            currentText.append(".")
 
             if let lastElement = elements.last, lastElement.count == 1 {
                 currentText.removeLast()
@@ -102,27 +131,91 @@ class Calculator {
         }
         return true
     }
-    func doThePercent() {}
-    func doTheMath() {
-        // Create local copy of operations
-        var operationsToReduce = elements
+// Calculate % Percentage
+    func doThePercent() -> (validity: Bool, message: String) {
+       // Create local copy of operations
+         var operation = elements
         // Iterate over operations while an operand still here
-        while operationsToReduce.count > 1 {
-            let left = Float(operationsToReduce[0])!
-            let operand = operationsToReduce[1]
-            let right = Float(operationsToReduce[2])!
-            let result: Float
+        if operation.count == 1 {
+         let left = Float(operation[0])!
+         let result: Float = left / 100
+            currentText.append("%")
+        operation.insert("\(result)", at: 0)
+        } else {
+            return (false, "Veuillez entrer une expression correcte.")
+                }
 
-            switch operand {
-            case "+": result = left + right
-            case "-": result = left - right
-            case "x": result = left * right
-            case "÷": result = left / right
-            default: fatalError("Unknown operator !")
-            }
-            operationsToReduce = Array(operationsToReduce.dropFirst(3))
-            operationsToReduce.insert("\(result)", at: 0)
+        if let result = operation.first, let floatResult = Float(result) {
+            currentText.append(" = \(floatResult.clean)")
         }
-        currentText.append(" = \(operationsToReduce.first!)")
+        return (true, "")
+    }
+// Calculate Equal
+    func doTheMath() -> (validity: Bool, message: String) {
+        guard expressionIsCorrect else {
+            return (false, "Veuillez entrer une expression correcte.")
+        }
+        guard expressionHasEnoughElement else {
+            return (false, "Veuillez démarrer un nouveau calcul.")
+        }
+        if expressionHasResult {
+            if let lastElement = elements.last {
+                currentText = lastElement
+                return (true, "\(lastElement)")
+            }
+        }
+        var operations = elements
+        var result: Float = 0
+        var index = 0
+
+        func executeOperation(_ signOperator: SignOperator) {
+            if let firstOperand = Float(operations[index-1]), let secondOperand = Float(operations[index+1]) {
+                switch signOperator {
+                case .addition:
+                    result = firstOperand + secondOperand
+                case .substraction:
+                    result = firstOperand - secondOperand
+                case .multiplication:
+                    result = firstOperand * secondOperand
+                case .division:
+                    result = firstOperand / secondOperand
+            }
+            operations.remove(at: index+1)
+            operations.remove(at: index)
+            operations.remove(at: index-1)
+            operations.insert("\(result)", at: index-1)
+            index = 0
+        }
+    }
+    // Iterate over operations while an operator still here
+        while index < operations.count - 1 {
+            if operations.contains("×") || operations.contains("÷") {
+                if operations[index] == "×" {
+                    executeOperation(.multiplication)
+                } else if operations[index] == "÷" {
+                    if isDividedByZero {
+                        return (false, "Impossible de diviser par 0 !")
+                    } else {
+                        executeOperation(.division)
+                    }
+                }
+            } else {
+                if operations[index] == "+" {
+                    executeOperation(.addition)
+                } else if operations[index] == "-" {
+                    executeOperation(.substraction)
+                }
+            }
+            index += 1
+        }
+
+        if let result = operations.first, let floatResult = Float(result) {
+            currentText.append(" = \(floatResult.clean)")
+        }
+    return (true, "")
+}
+    // MARK: - Fileprivate enumeration
+    fileprivate enum SignOperator {
+        case addition, substraction, multiplication, division
     }
 }
