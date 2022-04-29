@@ -114,8 +114,11 @@ class Calculator {
 
         removeLastEntryOfCurrentText()
     }
+    func clearAll() {
+        currentText = ""
+    }
     // Add Numbers to Calculate
-    func addNumbers(number: String) {
+    func addNumber(number: String) {
         emptyCurrentTextIfExpressionHasResult()
         currentText.append(number)
     }

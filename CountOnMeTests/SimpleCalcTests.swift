@@ -17,7 +17,12 @@ class SimpleCalcTests: XCTestCase {
         super.setUp()
         calculator = Calculator(currentText: "")
     }
+//  Number
+    func testGivenCalculTextIsEmpty_WhenAddNumber_ThenNumberAppear() {
+        calculator.addNumber(number: "1")
 
+        XCTAssert(calculator.currentText == "1")
+        }
 // Addition
     func testGivenAdd_WhenTapEqual_ThenResultIsSum() {
         calculator.currentText = "1 + 1 = 2"
@@ -53,7 +58,22 @@ class SimpleCalcTests: XCTestCase {
 
         XCTAssertEqual(calculator.currentText, "3")
     }
-//  Number
-    func testGivenIsEmpty_WhenTapNumber_ThenNumberAppear() {
+//  Decimal Number
+    func testGivenNumberWasAdd_WhenAddDecimalAndNumber_ThenDecimalNumberAppear() {
+        calculator.addNumber(number: "2")
+        calculator.addDecimal(symbol: ".")
+        calculator.addNumber(number: "5")
+
+        XCTAssert(calculator.isDecimal == true)
+        XCTAssert(calculator.currentText == "2.5")
+    }
+// All Clear
+    func testGiven_WhenTapAllClear_ThenRemoveAll() {
+        calculator.addNumber(number: "10")
+        calculator.addOperator(operator: "+")// "x"
+        calculator.addNumber(number: "6")
+        calculator.clearAll()
+
+        XCTAssert(calculator.currentText == "")
     }
  }

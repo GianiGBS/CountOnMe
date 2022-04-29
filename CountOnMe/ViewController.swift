@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     // View actions
     @IBAction func tappedAllClearButton(_ sender: UIButton) {
-        calculator.currentText.removeAll()
+        calculator.clearAll()
         textView.text = calculator.currentText
     }
     @IBAction func tappedClearLastButton(_ sender: UIButton) {
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-        calculator.addNumbers(number: numberText)
+        calculator.addNumber(number: numberText)
             textView.text = calculator.currentText
         }
     // Add Decimal Numbers
