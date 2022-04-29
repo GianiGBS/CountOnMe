@@ -1,5 +1,5 @@
 //
-//  Extenions Float.swift
+//  Extensions Float.swift
 //  CountOnMe
 //
 //  Created by Giovanni Gabriel on 26/04/2022.

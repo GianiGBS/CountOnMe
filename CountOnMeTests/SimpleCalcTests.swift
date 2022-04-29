@@ -20,22 +20,40 @@ class SimpleCalcTests: XCTestCase {
 
 // Addition
     func testGivenAdd_WhenTapEqual_ThenResultIsSum() {
-        calculator.currentText = "1 + 1"
-        calculator.doTheMath()
+        calculator.currentText = "1 + 1 = 2"
+        _ = calculator.doTheMath()
+
+        XCTAssertEqual(calculator.currentText, "2")
     }
-// Substraction
+//  Substraction
     func testGivenSubtract_WhenTapEqual_ThenResultIsDifference() {
+        calculator.currentText = "3 - 1 = 2"
+        _ = calculator.doTheMath()
+
+        XCTAssertEqual(calculator.currentText, "2")
     }
-// Multiplication
+//  Multiplication
     func testGivenMultiply_WhenTapEqual_ThenResultIsProduct() {
+        calculator.currentText = "1 × 2 = 2"
+        _ = calculator.doTheMath()
+
+        XCTAssertEqual(calculator.currentText, "2")
     }
-// Division
+//  Division
     func testGivenDivide_WhenTapEqual_ThenResultIsQuotient() {
+        calculator.currentText = "4 ÷ 2 = 2"
+        _ = calculator.doTheMath()
+
+        XCTAssertEqual(calculator.currentText, "2")
     }
-// Priority
+//  Priority
     func testGivenMultiOperator_WhenTapEqual_ThenResultIsPriority() {
+        calculator.currentText = "1 × 1 + 4 ÷ 2  = 3"
+        _ = calculator.doTheMath()
+
+        XCTAssertEqual(calculator.currentText, "3")
     }
-// Number
+//  Number
     func testGivenIsEmpty_WhenTapNumber_ThenNumberAppear() {
     }
-}
+ }

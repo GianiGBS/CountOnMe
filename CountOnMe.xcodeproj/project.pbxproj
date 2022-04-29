@@ -15,7 +15,7 @@
 		1FA43BE8224E569A00F565CB /* SimpleCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BE7224E569A00F565CB /* SimpleCalcTests.swift */; };
 		1FA43BF3224E569A00F565CB /* SimpleCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA43BF2224E569A00F565CB /* SimpleCalcUITests.swift */; };
 		C260508C28033CC800243871 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260508B28033CC800243871 /* Calculator.swift */; };
-		C2A0E40E28185D81002C6A5C /* Extenions Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E40D28185D81002C6A5C /* Extenions Float.swift */; };
+		C2A0E40E28185D81002C6A5C /* Extensions Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A0E40D28185D81002C6A5C /* Extensions Float.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		1FA43BF2224E569A00F565CB /* SimpleCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalcUITests.swift; sourceTree = "<group>"; };
 		1FA43BF4224E569A00F565CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C260508B28033CC800243871 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
-		C2A0E40D28185D81002C6A5C /* Extenions Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Extenions Float.swift"; path = "CountOnMeTests/Extenions Float.swift"; sourceTree = SOURCE_ROOT; };
+		C2A0E40D28185D81002C6A5C /* Extensions Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Extensions Float.swift"; path = "CountOnMe/Extension/Extensions Float.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 		1FA43BD1224E569900F565CB /* CountOnMe */ = {
 			isa = PBXGroup;
 			children = (
-				C2A0E40D28185D81002C6A5C /* Extenions Float.swift */,
+				C22E8751281C31B700FC14CF /* Extension */,
 				C221C0A027E4D48900ECDA7E /* Supporting Files */,
 				C221C0A227E4D50300ECDA7E /* Model */,
 				C221C0A127E4D4B600ECDA7E /* View */,
@@ -161,6 +161,14 @@
 				C260508B28033CC800243871 /* Calculator.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		C22E8751281C31B700FC14CF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0E40D28185D81002C6A5C /* Extensions Float.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +326,7 @@
 				1FA43BD5224E569900F565CB /* ViewController.swift in Sources */,
 				1FA43BD3224E569900F565CB /* AppDelegate.swift in Sources */,
 				C260508C28033CC800243871 /* Calculator.swift in Sources */,
-				C2A0E40E28185D81002C6A5C /* Extenions Float.swift in Sources */,
+				C2A0E40E28185D81002C6A5C /* Extensions Float.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,7 +539,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SimpleCalcTests/Info.plist;
+				INFOPLIST_FILE = "/Users/giovannigbs/Documents/1 Work/Etudes/OpenClassroom/Projet 5/Mission/Projet_CountOnMe-master/CountOnMeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -551,7 +559,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SimpleCalcTests/Info.plist;
+				INFOPLIST_FILE = "/Users/giovannigbs/Documents/1 Work/Etudes/OpenClassroom/Projet 5/Mission/Projet_CountOnMe-master/CountOnMeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,7 +578,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SimpleCalcUITests/Info.plist;
+				INFOPLIST_FILE = "/Users/giovannigbs/Documents/1 Work/Etudes/OpenClassroom/Projet 5/Mission/Projet_CountOnMe-master/CountOnMeUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -589,7 +597,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SimpleCalcUITests/Info.plist;
+				INFOPLIST_FILE = "/Users/giovannigbs/Documents/1 Work/Etudes/OpenClassroom/Projet 5/Mission/Projet_CountOnMe-master/CountOnMeUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
