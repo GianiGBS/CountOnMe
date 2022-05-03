@@ -138,7 +138,6 @@ class Calculator {
     func doThePercent() -> (validity: Bool, message: String) {
        // Create local copy of operations
          var operation = elements
-        // Iterate over operations while an operand still here
         if operation.count == 1 {
          let left = Float(operation[0])!
          let result: Float = left / 100
