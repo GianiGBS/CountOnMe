@@ -61,19 +61,74 @@ class SimpleCalcTests: XCTestCase {
 //  Decimal Number
     func testGivenNumberWasAdd_WhenAddDecimalAndNumber_ThenDecimalNumberAppear() {
         calculator.addNumber(number: "2")
-        calculator.addDecimal(symbol: ".")
+        _ = calculator.addDecimal(symbol: ".")
         calculator.addNumber(number: "5")
 
         XCTAssert(calculator.isDecimal == true)
-        XCTAssert(calculator.currentText == "2.5")
+        XCTAssertEqual(calculator.currentText, "2.5")
+    }
+    func testGivenCurrentTextIsEmpty_WhenAddDecimalAndAddNumber5_Then0Appear() {
+        calculator.currentText = ""
+        _ = calculator.addDecimal(symbol: ".")
+        calculator.addNumber(number: "5")
+
+        XCTAssertEqual(calculator.currentText, "0.5")
     }
 // All Clear
-    func testGiven_WhenTapAllClear_ThenRemoveAll() {
-        calculator.addNumber(number: "10")
-        calculator.addOperator(operator: "+")// "x"
-        calculator.addNumber(number: "6")
+    func testGivenIs10MultipliedBy6_WhenTapClearAll_ThenRemoveAll() {
+        calculator.currentText = "10 x 6"
         calculator.clearAll()
 
-        XCTAssert(calculator.currentText == "")
+        XCTAssertEqual(calculator.currentText, "")
     }
+// Clear Last Entry
+    func testGivenIs2Plus4_WhenTapClearLastEntry_ThenRemoveLastElement() {
+        calculator.currentText = "2 + 4"
+        calculator.clearLastEntry()
+
+        XCTAssertEqual(calculator.currentText, "2 + ")
+    }
+// Percentage
+    func testGivenIs10_WhenTapPercent_ThenResultIsQuotient() {
+        calculator.currentText = "10"
+        _ = calculator.doThePercent()
+
+        XCTAssertEqual(calculator.currentText, "0.1")
+    }
+// Percentage w Decimal
+    func testGivenIsDecimal_WhenTapPercent_ThenResultIsQuotient() {
+        calculator.currentText = "5.5"
+        _ = calculator.doThePercent()
+
+        XCTAssertEqual(calculator.currentText, "0.055")
+    }
+// Percentage w 0
+    func testGivendIs0_WhenTapPercent_ThenValidityElementReturnFalse() {
+        calculator.currentText = "0"
+
+        XCTAssertEqual(calculator.doThePercent().validity, false)
+        XCTAssertEqual(calculator.doThePercent().message, "Veuillez entrer une expression correcte.")
+    }
+// Divided by 0
+    func testGivendIs7Divided0_WhenTapEqual_ThenValidityElementReturnFalse() {
+        calculator.currentText = "7 ÷ 0"
+
+        XCTAssertEqual(calculator.doTheMath().validity, false)
+        XCTAssertEqual(calculator.doTheMath().message, "Impossible de diviser par 0 !")
+    }
+// Operator
+    func testGivendIs2Plus4Plus_WhenTapEqual_ThenValidityElementReturnFalse() {
+        calculator.currentText = "2 + 4 +"
+
+        XCTAssertEqual(calculator.doTheMath().validity, false)
+        XCTAssertEqual(calculator.doTheMath().message, "Veuillez entrer une expression correcte.")
+    }
+// Add operator conecutively
+    func testGivenIs4Plus_WhenMinusOperatorButtonTapped_ThenCanAddOperatorBooleanShouldReturnFalse() {
+            calculator.currentText = "4 + "
+
+            _ = calculator.addOperator(operator: "-")
+
+            XCTAssertFalse(calculator.canAddOperator)
+        }
  }

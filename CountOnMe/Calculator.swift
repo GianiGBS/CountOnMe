@@ -122,7 +122,7 @@ class Calculator {
         emptyCurrentTextIfExpressionHasResult()
         currentText.append(number)
     }
-    func addDecimal(symbol: String) -> Bool {
+   func addDecimal(symbol: String) -> Bool {
         emptyCurrentTextIfExpressionHasResult()
         if !isDecimal {
             currentText.append(".")
@@ -136,23 +136,35 @@ class Calculator {
     }
 // Calculate % Percentage
     func doThePercent() -> (validity: Bool, message: String) {
+        guard !isLastCharacterDecimal else {
+            return (false, "Veuillez entrer une expression correcte.")
+        }
+        if expressionHasResult {
+            if let lastElement = elements.last {
+                currentText = lastElement
+                return (true, "\(lastElement)")
+            }
+        }
        // Create local copy of operations
-         var operation = elements
-        if operation.count == 1 {
-         let left = Float(operation[0])!
-         let result: Float = left / 100
-            currentText.append("%")
-        operation.insert("\(result)", at: 0)
+        var operation = elements
+        let firstOperand = Float(operation[0])!
+
+        if operation.count == 1 && firstOperand != 0 {
+            let result: Float = firstOperand / 100
+            operation.remove(at: 0)
+            operation.insert("\(result)", at: 0)
         } else {
             return (false, "Veuillez entrer une expression correcte.")
                 }
 
         if let result = operation.first, let floatResult = Float(result) {
-            currentText.append(" = \(floatResult.clean)")
+            currentText.removeAll()
+            currentText.append("\(floatResult.clean)")
         }
         return (true, "")
     }
 // Calculate Equal
+    // swiftlint:disable:next cyclomatic_complexity
     func doTheMath() -> (validity: Bool, message: String) {
         guard expressionIsCorrect else {
             return (false, "Veuillez entrer une expression correcte.")
@@ -169,7 +181,6 @@ class Calculator {
         var operations = elements
         var result: Float = 0
         var index = 0
-
         func executeOperation(_ signOperator: SignOperator) {
             if let firstOperand = Float(operations[index-1]), let secondOperand = Float(operations[index+1]) {
                 switch signOperator {
@@ -210,7 +221,6 @@ class Calculator {
             }
             index += 1
         }
-
         if let result = operations.first, let floatResult = Float(result) {
             currentText.append(" = \(floatResult.clean)")
         }

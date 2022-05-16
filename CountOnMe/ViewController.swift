@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     // Calculate % Percentage
     @IBAction func tappedPourCentButton(_ sender: UIButton) {
         if calculator.doThePercent().validity == false {
-            alert(title: "Zéro!", description: calculator.doTheMath().message)
+            alert(title: "Zéro!", description: calculator.doThePercent().message)
         }
         textView.text = calculator.currentText
     }
