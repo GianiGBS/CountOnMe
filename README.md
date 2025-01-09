@@ -17,7 +17,7 @@
 
 ## **📜 Fonctionnalités principales**
 
-**1\. Calculs mathématiques de base** :
+1\. **Calculs mathématiques de base** :
 
 -  Addition
 
@@ -47,7 +47,7 @@
 
 ## **🎨 Design**
 
-**• Responsive Design** : Compatible avec toutes les tailles d’écran iPhone.
+-  **Responsive Design** : Compatible avec toutes les tailles d’écran iPhone.
 
 -  **Charte graphique** : Modernisée pour offrir une expérience visuelle agréable.
 
@@ -57,13 +57,13 @@
 
 ## **🛠️ Architecture technique**
 
-**• Architecture MVC** :
+-  **Architecture MVC** :
 
--  **Modèle** : Gère la logique des calculs.
+  -  **Modèle** : Gère la logique des calculs.
 
--  **Vue** : Interface utilisateur intuitive et réactive.
+  -  **Vue** : Interface utilisateur intuitive et réactive.
 
--  **Contrôleur** : Facilite les interactions entre la vue et le modèle.
+  -  **Contrôleur** : Facilite les interactions entre la vue et le modèle.
 
 -  **Allègement du ViewController** pour une meilleure maintenance et lisibilité du code.
 
@@ -71,7 +71,7 @@
 
 ## **✅ Tests**
 
-**• Tests unitaires** : Assurent la précision des calculs et la stabilité de l’application.
+-  **Tests unitaires** : Assurent la précision des calculs et la stabilité de l’application.
 
 -  **Couverture étendue** : Garantit que toutes les fonctionnalités principales fonctionnent comme prévu.
 
@@ -79,7 +79,7 @@
 
 ## **🚀 Installation**
 
-**1\. Clonez le dépôt GitHub :**
+1\. Clonez le dépôt GitHub :
 
   
 ```bash
@@ -93,15 +93,15 @@ cd CountOnMe
 
   
 
-**2\. Ouvrez le projet dans Xcode.**
+2\. Ouvrez le projet dans Xcode.
 
-**3\. Lancez l’application sur un simulateur ou un appareil physique.**
+3\. Lancez l’application sur un simulateur ou un appareil physique.
 
   
 
 ## **📈 Améliorations apportées**
 
-**• Passage d’une conception non responsive à une interface adaptable**.
+-  Passage d’une conception non responsive à une **interface adaptable**.
 
 -  Ajout d’une charte graphique cohérente.
 
@@ -117,7 +117,7 @@ cd CountOnMe
 
   
 
-**Les contributions sont les bienvenues ! Si vous souhaitez signaler un problème ou proposer une amélioration, ouvrez une issue** ou une **pull request** sur ce dépôt.
+Les contributions sont les bienvenues ! Si vous souhaitez signaler un problème ou proposer une amélioration, ouvrez une **issue** ou une **pull request** sur ce dépôt.
 
   
 
@@ -125,7 +125,7 @@ cd CountOnMe
 
   
 
-**Ce projet est sous licence MIT. Consultez le fichier LICENSE pour plus d’informations.**
+Ce projet est sous licence MIT. Consultez le fichier LICENSE pour plus d’informations.
 
   
 
@@ -133,7 +133,7 @@ cd CountOnMe
 
   
 
-**L’application CountOnMe** permet :
+L’application **CountOnMe** permet :
 
   
 
