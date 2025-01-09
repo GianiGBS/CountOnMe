@@ -11,7 +11,7 @@
 
   
 
-**CountOnMe offre une expérience utilisateur fluide avec un design modernisé et des fonctionnalités enrichies. Elle est basée sur une architecture robuste (MVC) et intègre des tests unitaires pour garantir une fiabilité optimale.**
+CountOnMe offre une expérience utilisateur fluide avec un design modernisé et des fonctionnalités enrichies. Elle est basée sur une architecture robuste (MVC) et intègre des tests unitaires pour garantir une fiabilité optimale.
 
   
 
