@@ -19,29 +19,29 @@
 
 **1\. Calculs mathématiques de base** :
 
-• Addition
+-  Addition
 
-• Soustraction
+-  Soustraction
 
-• Multiplication
+-  Multiplication
 
-• Division
+-  Division
 
 2\. **Fonctionnalités avancées** :
 
-• Calculs avec décimaux.
+-  Calculs avec décimaux.
 
-• Calcul des pourcentages.
+-  Calcul des pourcentages.
 
-• Fonction “Effacer” pour supprimer le dernier caractère.
+-  Fonction “Effacer” pour supprimer le dernier caractère.
 
-• Option “Tout effacer” pour réinitialiser les calculs.
+-  Option “Tout effacer” pour réinitialiser les calculs.
 
 3\. **Interface utilisateur améliorée** :
 
-• Design responsive pour s’adapter à toutes les tailles d’écran.
+-  Design responsive pour s’adapter à toutes les tailles d’écran.
 
-• Interface intuitive et dynamique.
+-  Interface intuitive et dynamique.
 
   
 
@@ -49,9 +49,9 @@
 
 **• Responsive Design** : Compatible avec toutes les tailles d’écran iPhone.
 
-• **Charte graphique** : Modernisée pour offrir une expérience visuelle agréable.
+-  **Charte graphique** : Modernisée pour offrir une expérience visuelle agréable.
 
-• **Mise en page dynamique** : Adaptabilité des éléments UI pour un meilleur confort utilisateur.
+-  **Mise en page dynamique** : Adaptabilité des éléments UI pour un meilleur confort utilisateur.
 
   
 
@@ -59,13 +59,13 @@
 
 **• Architecture MVC** :
 
-• **Modèle** : Gère la logique des calculs.
+-  **Modèle** : Gère la logique des calculs.
 
-• **Vue** : Interface utilisateur intuitive et réactive.
+-  **Vue** : Interface utilisateur intuitive et réactive.
 
-• **Contrôleur** : Facilite les interactions entre la vue et le modèle.
+-  **Contrôleur** : Facilite les interactions entre la vue et le modèle.
 
-• **Allègement du ViewController** pour une meilleure maintenance et lisibilité du code.
+-  **Allègement du ViewController** pour une meilleure maintenance et lisibilité du code.
 
   
 
@@ -73,7 +73,7 @@
 
 **• Tests unitaires** : Assurent la précision des calculs et la stabilité de l’application.
 
-• **Couverture étendue** : Garantit que toutes les fonctionnalités principales fonctionnent comme prévu.
+-  **Couverture étendue** : Garantit que toutes les fonctionnalités principales fonctionnent comme prévu.
 
   
 
@@ -103,13 +103,13 @@ cd CountOnMe
 
 **• Passage d’une conception non responsive à une interface adaptable**.
 
-• Ajout d’une charte graphique cohérente.
+-  Ajout d’une charte graphique cohérente.
 
-• Optimisation de la logique de calcul.
+-  Optimisation de la logique de calcul.
 
-• Réduction des responsabilités du ViewController.
+-  Réduction des responsabilités du ViewController.
 
-• Ajout de nouvelles fonctionnalités comme le pourcentage et la gestion des décimaux.
+-  Ajout de nouvelles fonctionnalités comme le pourcentage et la gestion des décimaux.
 
   
 
