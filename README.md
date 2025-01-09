@@ -83,9 +83,9 @@
 
   
 ```bash
-**git clone https://github.com/GianiGBS/CountOnMe.git**
+git clone https://github.com/GianiGBS/CountOnMe.git
 
-**cd CountOnMe**
+cd CountOnMe
 ```
   
 
